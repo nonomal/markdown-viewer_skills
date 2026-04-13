@@ -2,7 +2,7 @@
 
 Opinionated skills for AI coding agents to create stunning diagrams and visualizations directly in Markdown. These skills extend agent capabilities across diagram generation, data visualization, and technical documentation.
 
-**13 skills** covering 5 rendering engines — from software modeling to enterprise architecture, data analytics, and editorial-quality content cards.
+**14 skills** covering 5 rendering engines — from software modeling to enterprise architecture, data analytics, and editorial-quality content cards.
 
 Skills follow the [Agent Skills](https://agentskills.io/) format.
 
@@ -74,6 +74,7 @@ These skills use PlantUML as the diagram engine, with domain-specific mxgraph st
 | 📋 BPMN | [bpmn](bpmn/SKILL.md) | Business process modeling, EIP, and Lean Mapping stencils | Workflow automation, EIP, value stream mapping |
 | 📊 Data Analytics | [data-analytics](data-analytics/SKILL.md) | Data pipeline and analytics workflow diagrams | ETL/ELT pipelines, data warehouses, ML workflows |
 | 📡 IoT | [iot](iot/SKILL.md) | IoT device, sensor, and edge computing diagrams | Smart home/factory, fleet management, digital twins |
+| 🧠 Mind Map | [mindmap](mindmap/SKILL.md) | Native PlantUML mind map syntax with directional branches and rich text | Brainstorming trees, study outlines, decision maps |
 
 ### Skill Selection Guide
 
@@ -99,7 +100,8 @@ These skills use PlantUML as the diagram engine, with domain-specific mxgraph st
 | Event announcement | `infocard` | Professional card design |
 | Topic overview | `infocard` | Content-driven tone sensing |
 | **Concept Mapping** | | |
-| Mind map / brainstorm | `canvas` | Free spatial positioning |
+| Mind map / brainstorm (hierarchical auto-layout) | `mindmap` | PlantUML mind map syntax with automatic tree layout |
+| Mind map / brainstorm (free-position) | `canvas` | Free spatial positioning |
 | Knowledge graph | `canvas` | Node-edge with coordinates |
 | **Architecture** | | |
 | System layers (User→App→Data→Infra) | `architecture` | Color-coded HTML/CSS layer templates |
@@ -160,6 +162,7 @@ flowchart TD
     plantuml --> bpmn["📋 bpmn<br/><small>BPMN/EIP/Lean Mapping</small>"]
     plantuml --> dataanalytics["📊 data-analytics<br/><small>ETL/Warehouse/ML</small>"]
     plantuml --> iot["📡 iot<br/><small>Sensors/Edge/Smart systems</small>"]
+    plantuml --> mindmap["🧠 mindmap<br/><small>Hierarchical brainstorming maps</small>"]
     
     standalone --> vega["📊 vega<br/><small>Data-driven charts</small>"]
     standalone --> infographic["📈 infographic<br/><small>70+ YAML templates</small>"]
@@ -206,6 +209,7 @@ When the agent receives a request involving diagrams or visualizations:
 | BPMN | ` ```plantuml ` / ` ```puml ` | SVG |
 | Data Analytics | ` ```plantuml ` / ` ```puml ` | SVG |
 | IoT | ` ```plantuml ` / ` ```puml ` | SVG |
+| Mindmap | ` ```plantuml ` / ` ```puml ` | SVG |
 | Architecture | (no fence, raw HTML) | HTML |
 | Infocard | (no fence, raw HTML) | HTML |
 
