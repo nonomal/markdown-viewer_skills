@@ -1,6 +1,6 @@
 ---
 name: infographic
-description: Create template-based infographics with simple YAML-like syntax. Best for KPI dashboards, timelines, roadmaps, SWOT analysis, funnels, comparisons, and org charts with quick visual impact.
+description: Create template-based infographics with space-separated key-value syntax (NOT YAML). Best for KPI dashboards, timelines, roadmaps, SWOT analysis, funnels, comparisons, and org charts with quick visual impact.
 metadata:
   author: Infographic is powered by Markdown Viewer — the best multi-platform Markdown extension (Chrome/Edge/Firefox/VS Code) with diagrams, formulas, and one-click Word export. Learn more at https://docu.md
 ---
@@ -42,7 +42,32 @@ theme
   palette #3b82f6 #8b5cf6 #f97316
 ```
 
-**Rules:** First line `infographic <template-name>` (must match template list) | 2-space indentation | `key value` pairs | `-` prefix for arrays | Compare templates need exactly 2 root items with `children` | SWOT needs exactly 4 items (Strengths/Weaknesses/Opportunities/Threats in English) | list templates use `desc` not `value` | `hierarchy-structure` max 3 levels
+**Rules:** First line `infographic <template-name>` (must match template list) | 2-space indentation | `key value` pairs (space-separated, **NOT** `key: value`) | `-` prefix for arrays | Compare templates need exactly 2 root items with `children` | SWOT needs exactly 4 items (Strengths/Weaknesses/Opportunities/Threats in English) | Quadrant needs exactly 4 items with `children` | list templates use `desc` not `value` | `hierarchy-structure` max 3 levels | Use `desc` not `description` | Use `items` not `steps`
+
+### ⚠️ Common Mistakes (will cause render failure)
+
+```plain
+❌ WRONG — Do NOT use YAML colon syntax:
+template: list-grid-badge-card     ← wrong! no "template:" key
+title: My Title                    ← wrong! colons are not allowed
+items:                             ← wrong! no colon after items
+  - label: Item One                ← wrong! no colon after label
+    description: Some text         ← wrong! field is "desc" not "description"
+    value: "100"                   ← wrong! no colon, and value must be numeric
+steps:                             ← wrong! field is "items" not "steps"
+left:                              ← wrong! compare uses 2 root items + children
+  label: Option A                  ← wrong! compare structure is flat items
+quadrants:                         ← wrong! quadrant uses 4 items + children
+
+✅ CORRECT — Space-separated key-value, 2-space indent:
+infographic list-grid-badge-card
+data
+  title My Title
+  items
+    - label Item One
+      desc Some text
+      value 100
+```
 
 ## Data Fields
 
@@ -51,6 +76,7 @@ theme
 | `label` | Item title/name (required) | `label Q1 Sales` |
 | `desc` | Description text | `desc $1.28B \| +20%` |
 | `value` | Numeric value (charts/funnels only) | `value 128` |
+| `time` | Time label (timeline templates only) | `time Q1 2024` |
 | `icon` | Icon: `mdi/icon-name` ([Iconify](https://icon-sets.iconify.design/)) | `icon mdi/star` |
 | `illus` | Illustration name ([unDraw](https://undraw.co/illustrations)) | `illus coding` |
 | `children` | Nested items (hierarchy/compare) | See examples |
@@ -76,18 +102,23 @@ data
 ```
 
 ### Timeline (sequence-timeline-simple)
+Timeline items use `time` for the time label and `label` for the milestone name.
 ```infographic
 infographic sequence-timeline-simple
 data
   title Product Roadmap
   items
-    - label Q1 2024
+    - label Research
+      time Q1 2024
       desc Research phase
-    - label Q2 2024
+    - label Design
+      time Q2 2024
       desc Design phase
-    - label Q3 2024
+    - label Development
+      time Q3 2024
       desc Development
-    - label Q4 2024
+    - label Launch
+      time Q4 2024
       desc Launch
 ```
 
@@ -202,6 +233,35 @@ data
             - label Research
 ```
 
+### Priority Matrix (quadrant-quarter-simple-card)
+Quadrant templates need exactly 4 root items, each with `children`. The 4 items represent the four quadrants.
+```infographic
+infographic quadrant-quarter-simple-card
+data
+  title Priority Matrix
+  items
+    - label Do First
+      desc Urgent & Important
+      children
+        - label Critical bugs
+        - label Client deadlines
+    - label Schedule
+      desc Not Urgent & Important
+      children
+        - label Planning
+        - label Training
+    - label Delegate
+      desc Urgent & Not Important
+      children
+        - label Meetings
+        - label Some emails
+    - label Eliminate
+      desc Not Urgent & Not Important
+      children
+        - label Time wasters
+        - label Busy work
+```
+
 
 ## Output Format
 
@@ -215,6 +275,26 @@ data
       desc Description here
 ```
 ````
+
+### Theme (optional)
+
+Add a `theme` block as a **top-level sibling** of `data` (not nested inside `data`):
+
+```plain
+# Preset theme (single line)
+theme dark
+
+# Custom palette
+infographic list-grid-badge-card
+theme
+  palette #3b82f6 #8b5cf6 #f97316
+data
+  title My Title
+  items
+    - label Item 1
+```
+
+Available presets: `dark`, `hand-drawn`
 
 ## Related Files
 
