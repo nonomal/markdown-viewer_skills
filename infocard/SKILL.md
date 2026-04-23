@@ -221,7 +221,9 @@ Use when the reader needs stages, steps, or directional movement.
 | Layout | File | Best For |
 |---|---|---|
 | **Timeline Flow** | [layouts/timeline-flow.md](layouts/timeline-flow.md) | Sequential steps, milestones, process stages with vertical timeline |
+| **Station Workflow** | [layouts/station-workflow.md](layouts/station-workflow.md) | Detailed workflow breakdowns where each step carries structured attributes (input/process/output/gate/duration) |
 | **Roadmap Board** | [layouts/roadmap-board.md](layouts/roadmap-board.md) | NOW / NEXT / LATER planning, strategic sequencing, phased rollouts |
+| **Staircase Progression** | [layouts/staircase-progression.md](layouts/staircase-progression.md) | Maturity curves, phased scope accumulation, stepped build-up stories |
 | **Funnel Stack** | [layouts/funnel-stack.md](layouts/funnel-stack.md) | Sales funnels, conversion flows, recruitment pipelines, decision narrowing |
 | **Incident Review** | [layouts/incident-review.md](layouts/incident-review.md) | Postmortems, outage reviews, reliability incidents, remediation snapshots |
 
@@ -233,7 +235,9 @@ Use when the card needs explicit trade-offs, prioritization, or side-by-side fra
 |---|---|---|
 | **Pros & Cons** | [layouts/pros-cons.md](layouts/pros-cons.md) | Trade-off analysis, decision framing, risk vs upside, balanced evaluation |
 | **Quadrant Matrix** | [layouts/quadrant-matrix.md](layouts/quadrant-matrix.md) | Priority mapping, risk-return framing, portfolio views, 2x2 classification |
+| **Matrix Table** | [layouts/matrix-table.md](layouts/matrix-table.md) | MxN classification grids with two meaningful axes and archetype-labeled cells |
 | **Comparison** | [layouts/comparison.md](layouts/comparison.md) | Side-by-side contrast, option framing, before/after or A/B comparisons |
+| **Principle Grid** | [layouts/principle-grid.md](layouts/principle-grid.md) | Numbered tenets paired with anti-pattern and application contrast per card |
 
 #### Grid and Inventory
 
@@ -252,6 +256,7 @@ Use when structure, adjacency, or network relationships matter more than sequenc
 | Layout | File | Best For |
 |---|---|---|
 | **Architecture Map** | [layouts/architecture-map.md](layouts/architecture-map.md) | Layered systems, platform overviews, service boundaries, technical blueprints |
+| **Layered Sidebar Map** | [layouts/layered-sidebar-map.md](layouts/layered-sidebar-map.md) | Layered stack flanked by context rails carrying cross-cut threads, KPIs, or value-chain anchors |
 | **Radial Hub** | [layouts/radial-hub.md](layouts/radial-hub.md) | Ecosystem overviews, core-plus-features, hub-and-spoke relationships |
 
 #### Document and Memo Logic

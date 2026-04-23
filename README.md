@@ -246,4 +246,4 @@ To add a new skill:
 
 ## 📄 License
 
-MIT
+GPL-3.0
